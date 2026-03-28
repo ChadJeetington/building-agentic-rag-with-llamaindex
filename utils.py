@@ -22,6 +22,12 @@ if _r not in sys.path:
 
 from helper import get_anthropic_api_key  # noqa: E402
 
+from agent_helpers import (  # noqa: E402
+    run_agent_workflow_sync,
+    tool_calling_workflow_from_retriever,
+    tool_calling_workflow_from_tools,
+)
+
 SONNET_MODEL = "claude-sonnet-4-6"
 HF_EMBED_MODEL = "BAAI/bge-small-en-v1.5"
 
@@ -97,3 +103,12 @@ def get_doc_tools(file_path: str, name: str):
         ),
     )
     return vector_tool, summary_tool
+
+
+__all__ = [
+    "get_doc_tools",
+    "get_router_query_engine",
+    "run_agent_workflow_sync",
+    "tool_calling_workflow_from_retriever",
+    "tool_calling_workflow_from_tools",
+]
