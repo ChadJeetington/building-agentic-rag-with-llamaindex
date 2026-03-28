@@ -40,11 +40,11 @@ def get_router_query_engine(pdf_path: str) -> RouterQueryEngine:
     nodes = splitter.get_nodes_from_documents(documents)
 
     summary_index = SummaryIndex(nodes)
-    vector_index = VectorStoreIndex(nodes)
+    vector_index = VectorStoreIndex(nodes, show_progress=True)
 
     summary_query_engine = summary_index.as_query_engine(
         response_mode="tree_summarize",
-        use_async=True,
+        use_async=False,
     )
     vector_query_engine = vector_index.as_query_engine()
 
@@ -74,11 +74,11 @@ def get_doc_tools(file_path: str, name: str):
     nodes = splitter.get_nodes_from_documents(documents)
 
     summary_index = SummaryIndex(nodes)
-    vector_index = VectorStoreIndex(nodes)
+    vector_index = VectorStoreIndex(nodes, show_progress=True)
 
     summary_query_engine = summary_index.as_query_engine(
         response_mode="tree_summarize",
-        use_async=True,
+        use_async=False,
     )
     vector_query_engine = vector_index.as_query_engine()
 
